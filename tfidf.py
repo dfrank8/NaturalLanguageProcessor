@@ -1,5 +1,7 @@
 import sys
 import math
+from textblob import TextBlob as tb
+# from __future__ import division, unicode_literals
 
 # These are the basic functions for tf-idf, assigning weights to words at they appear in a writing. 
 # http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/
