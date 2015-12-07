@@ -55,13 +55,22 @@ def analyzeBlog(blogList): # Analyze blog with tfidf, and other word analysis.
 # def updateFeatures(feature, newFeatures):
     # update good and bad features depending on the decision by the alogrithm of which class it falls under.
 
-def buildNewBlog(blogFile, blogAuthor, blogTitle, blogText, jsonObject):
-    if(blogFile == None):
-        
+# def buildNewBlog(blogFile, blogAuthor, blogTitle, blogText, jsonObject): # Returns an analyzable object
+#     if blogFile != None:
+#         if blogText != None:
+#             print ("[warn] Both commandline and file blogs were found, prioritzing for use of the file")
+#         # Do file stuff
+#     elif blogText != None:
+#         # build JSON object via blogTitle, blogAuthor, and blogText
+#     else:
+#         print ("[err] Error in creating new blog object...")
+#         return False
+
+# def analyzeNewBlog(blog):
+
 
     # Builds the new blog post based on the entry (commandline or txt file)
 def main():
-
     # Takes in commandLine args, and sorts variables if necessary. 
     parser = argparse.ArgumentParser(description='Analyze Blogs.', formatter_class=RawTextHelpFormatter)
     parser.add_argument('-b', '--blog', help='Manually enter the blog text here as a string. Formatted like:\n\nauthor: "authors name"\ntitle: "title"\nblog: "blog text"', default=None)
@@ -87,8 +96,6 @@ def main():
     for blog in json_data["writings"]["good"]:
     	goodBlogList.append(tb(blog["post"]))
 
-
-    
     analysisResults = analyzeBlog(badBlogList)
     features['bad']['words'], features['bad']['names'], features['bad']['religion'], features['bad']['weaponry'], features['bad']['government'] = analysisResults.outputsWordsArray, analysisResults.namesScore, analysisResults.religionScore, analysisResults.weaponryScore, analysisResults.governmentScore
     analysisResults2 = analyzeBlog(goodBlogList)
@@ -96,6 +103,7 @@ def main():
     
     # Apply weights
 
+    print("Current writings in database have been analyzed... Running comparisons against provided writing")
     # Analyze new file
 
     # Update and add new data to JSON object
